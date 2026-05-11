@@ -14,11 +14,12 @@ serde      = { workspace = true }
 serde_json = { workspace = true }
 chrono     = { workspace = true }
 thiserror  = { workspace = true }
-uuid       = { workspace = true }
-rayon      = { workspace = true }
+tracing    = { workspace = true }
+
+# Monte Carlo simulation — native only (rand requires getrandom/js on WASM)
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 rand       = { workspace = true }
 rand_distr = { workspace = true }
-tracing    = { workspace = true }
 
 [dev-dependencies]
 serde_json = { workspace = true }

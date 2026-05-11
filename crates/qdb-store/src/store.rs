@@ -182,4 +182,3 @@ impl QDBStore {
         Ok(batches)
     }
 }
-
