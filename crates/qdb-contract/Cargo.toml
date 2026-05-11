@@ -1,0 +1,15 @@
+[package]
+name        = "qdb-contract"
+description = "QumuloDB kernel contract — all types that cross the computation boundary"
+version.workspace    = true
+edition.workspace    = true
+authors.workspace    = true
+license.workspace    = true
+repository.workspace = true
+
+[dependencies]
+serde      = { workspace = true }
+serde_json = { workspace = true }
+chrono     = { workspace = true }
+thiserror  = { workspace = true }
+uuid       = { workspace = true }

@@ -1,0 +1,24 @@
+[package]
+name        = "qdb-kernel"
+description = "QumuloDB computation kernel — CPM, EVM, Monte Carlo, Resource levelling"
+version.workspace    = true
+edition.workspace    = true
+authors.workspace    = true
+license.workspace    = true
+repository.workspace = true
+
+[dependencies]
+qdb-contract = { path = "../qdb-contract" }
+
+serde      = { workspace = true }
+serde_json = { workspace = true }
+chrono     = { workspace = true }
+thiserror  = { workspace = true }
+uuid       = { workspace = true }
+rayon      = { workspace = true }
+rand       = { workspace = true }
+rand_distr = { workspace = true }
+tracing    = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }

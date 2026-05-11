@@ -1,0 +1,5 @@
+/target
+**/*.rs.bk
+Cargo.lock
+qdb_data/
+*.DS_Store
