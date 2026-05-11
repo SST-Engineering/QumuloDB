@@ -1,0 +1,67 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/qdb-contract",
+    "crates/qdb-kernel",
+    "crates/qdb-store",
+    "crates/qdb-cli",
+]
+
+[workspace.package]
+version     = "0.1.0"
+edition     = "2021"
+authors     = ["SST Engineering <engineering@sweetthunder.co.uk>"]
+license     = "UNLICENSED"
+repository  = "https://github.com/SST-Engineering/QumuloDB"
+rust-version = "1.78"
+
+[workspace.dependencies]
+# Serialisation
+serde       = { version = "1",    features = ["derive"] }
+serde_json  = { version = "1" }
+
+# Date / time
+chrono      = { version = "0.4",  features = ["serde"] }
+
+# Errors
+thiserror   = { version = "1" }
+anyhow      = { version = "1" }
+
+# Async
+tokio       = { version = "1",    features = ["full"] }
+
+# Columnar storage (QumuloDB store layer)
+arrow       = { version = "53",   features = ["prettyprint"] }
+arrow-array = { version = "53" }
+arrow-schema = { version = "53" }
+parquet     = { version = "53",   features = ["async"] }
+datafusion  = { version = "43" }
+
+# Random (Monte Carlo)
+rand        = { version = "0.8" }
+rand_distr  = { version = "0.4" }
+
+# Parallel execution
+rayon       = { version = "1.10" }
+
+# Logging
+tracing     = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# UUID
+uuid        = { version = "1", features = ["v4", "serde"] }
+
+# Internal crates
+qdb-contract = { path = "crates/qdb-contract" }
+qdb-kernel   = { path = "crates/qdb-kernel" }
+qdb-store    = { path = "crates/qdb-store" }
+
+[profile.release]
+opt-level   = 3
+lto         = "thin"
+codegen-units = 1
+
+[profile.release-wasm]
+inherits    = "release"
+opt-level   = "z"   # minimise WASM binary size
+lto         = true

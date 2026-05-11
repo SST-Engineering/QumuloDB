@@ -1,0 +1,26 @@
+[package]
+name        = "qdb-cli"
+description = "QumuloDB command-line interface"
+version.workspace    = true
+edition.workspace    = true
+authors.workspace    = true
+license.workspace    = true
+repository.workspace = true
+
+[[bin]]
+name = "qdb"
+path = "src/main.rs"
+
+[dependencies]
+qdb-contract = { path = "../qdb-contract" }
+qdb-kernel   = { path = "../qdb-kernel" }
+qdb-store    = { path = "../qdb-store" }
+
+serde      = { workspace = true }
+serde_json = { workspace = true }
+chrono     = { workspace = true }
+tokio      = { workspace = true, features = ["full"] }
+tracing    = { workspace = true }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+anyhow     = { workspace = true }
+clap       = { version = "4", features = ["derive"] }
